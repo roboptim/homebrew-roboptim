@@ -10,7 +10,7 @@ class RoboptimCorePluginIpopt < Formula
   depends_on "cmake" => :build
   depends_on "doxygen" => :build
   depends_on "pkg-config" => :build
-  depends_on "homebrew/science/ipopt" => :build
+  depends_on "homebrew/science/ipopt"
   depends_on "roboptim/roboptim/roboptim-core"
 
   def install
