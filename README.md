@@ -15,10 +15,13 @@ Available formulas
 * roboptim-core-plugin-knitro (depend on KNITRO)
 * roboptim-trajectory
 * roboptim-capsule (depend on qhull)
+* roboptim-retargeting (depend on libmocap, choreonoid)
 
 
 3rd party packages
 ------------------
 
+* choreonoid
 * knitro (proprietary, require KNITRO_USERNAME, KNITRO_PASSWORD
   environment variables to be set)
+* libmocap
