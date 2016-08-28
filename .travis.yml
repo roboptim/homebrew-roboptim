@@ -8,6 +8,7 @@ install:
 env:
   - PACKAGE=roboptim-core
   - PACKAGE=roboptim-core-plugin-eigen
+  - PACKAGE=roboptim-core-plugin-ipopt
 script:
   - export KNITRO_USERNAME="dummy"
   - export KNITRO_PASSWORD="dummy"
