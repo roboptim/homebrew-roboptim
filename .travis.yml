@@ -7,6 +7,7 @@ install:
   - brew tap --repair
 env:
   - PACKAGE=roboptim-core
+  - PACKAGE=roboptim-core-plugin-eigen
 script:
   - brew audit $PACKAGE
   - brew install -v $PACKAGE
