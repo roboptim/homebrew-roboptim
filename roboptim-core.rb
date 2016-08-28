@@ -1,9 +1,9 @@
 require "formula"
 
 class RoboptimCore < Formula
-  homepage "http://www.roboptim.net/"
-  url "https://github.com/roboptim/roboptim-core/releases/download/v2.0/roboptim-core-2.0.tar.bz2"
-  sha1 "626c8c13a9f758f29e15b6ea56de06d41f8c306e"
+  homepage "http://www.roboptim.net"
+  url "https://github.com/roboptim/roboptim-core/releases/download/v3.2/roboptim-core-3.2.tar.bz2"
+  sha256 "9c7793e069aa811c88052bc6f07ab349e9acfac5c8446b4a78736f34eb66f99e"
 
   head 'https://github.com/roboptim/roboptim-core.git'
 
@@ -11,7 +11,7 @@ class RoboptimCore < Formula
   depends_on "cmake" => :build
   depends_on "doxygen" => :build
   depends_on "eigen" => :build
-  depends_on "libtool"
+  depends_on "libtool" => :build
   depends_on "log4cxx"
   depends_on "pkg-config" => :build
 
@@ -25,18 +25,19 @@ class RoboptimCore < Formula
     # ------
     #
     # 1. Always link to liblog4cxx
-    # 2. Do not version plugins.
+    # 2. Skip util test with demangling error (fixed in 3.3)
     #
     # To be fixed upstream.
     if not build.head?
       liblog4cxx = %x[pkg-config --libs liblog4cxx].chomp
-      inreplace 'src/CMakeLists.txt', '  SOVERSION 2.0.0)', ')'
       args << "-DCMAKE_EXE_LINKER_FLAGS='" + liblog4cxx + "'"
       args << "-DCMAKE_MODULE_LINKER_FLAGS='" + liblog4cxx + "'"
+      inreplace 'tests/CMakeLists.txt', 'ROBOPTIM_CORE_TEST(util)', '#ROBOPTIM_CORE_TEST(util)'
     end
 
     system "cmake", ".", *args
     system "make", "install"
+    system "make", "test"
   end
 
   test do

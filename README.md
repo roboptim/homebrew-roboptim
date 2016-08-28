@@ -1,6 +1,8 @@
 homebrew-roboptim
 =================
 
+[![Build Status](https://travis-ci.org/roboptim/homebrew-roboptim.svg?branch=master)](https://travis-ci.org/roboptim/homebrew-roboptim)
+
 Homebrew formulas for RobOptim.
 
 

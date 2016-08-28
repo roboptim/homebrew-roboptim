@@ -11,3 +11,5 @@ script:
   - brew audit $PACKAGE
   - brew install -v $PACKAGE
   - brew test $PACKAGE
+notifications:
+  email: false
