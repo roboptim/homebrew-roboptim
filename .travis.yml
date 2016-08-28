@@ -9,6 +9,8 @@ env:
   - PACKAGE=roboptim-core
   - PACKAGE=roboptim-core-plugin-eigen
 script:
+  - export KNITRO_USERNAME="dummy"
+  - export KNITRO_PASSWORD="dummy"
   - brew audit $PACKAGE
   - brew install -v $PACKAGE
   - brew test $PACKAGE

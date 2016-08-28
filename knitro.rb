@@ -1,15 +1,15 @@
 require "formula"
 
-# KNITRO is a proprietary software and require a licence.
+# KNITRO is a proprietary software and requires a licence.
 #
 # You *need* to set the environment variables KNITRO_USERNAME and
 # KNITRO_PASSWORD to the right values before installing this formula.
 class Knitro < Formula
   homepage "http://www.artelys.com/en/optimization-tools/knitro"
 
-  url "http://" + ENV["KNITRO_USERNAME"] + ":" + ENV["KNITRO_PASSWORD"] + "@www.artelys.com/artelys_files/knitro/knitro_9.0/knitro-9.0.1-z-MacOSX-64.zip"
-  version "9.0.1"
-  sha1 "c28b4465531b184d22d0e164c5ae8931966f41be"
+  url "https://" + ENV["KNITRO_USERNAME"] + ":" + ENV["KNITRO_PASSWORD"] + "@www.artelys.com/artelys_files/knitro/knitro_10.1/knitro-10.1.1-z-MacOSX-64.zip"
+  version "10.1.1"
+  sha256 "e53b560e6bca7e1f6a27449427f2b5b7f8e434cd01c7f996838d747e6d7d717c"
 
   # No install scheme, list content manually.
   def install
