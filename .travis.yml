@@ -10,6 +10,7 @@ env:
   - PACKAGE=roboptim-core-plugin-eigen
   - PACKAGE=roboptim-core-plugin-ipopt
   - PACKAGE=roboptim-core-plugin-cminpack
+  - PACKAGE=roboptim-capsule
 script:
   - export KNITRO_USERNAME="dummy"
   - export KNITRO_PASSWORD="dummy"
