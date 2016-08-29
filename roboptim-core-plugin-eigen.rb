@@ -22,9 +22,6 @@ class RoboptimCorePluginEigen < Formula
 
     inreplace 'src/CMakeLists.txt', 'SOVERSION 3.2.0', ''
 
-    # ENV.append_path "PKG_CONFIG_PATH",
-    #                 "#{HOMEBREW_PREFIX}/lib/pkgconfig"
-
     system "cmake", ".", *args
     system "make", "install"
     system "make", "test"
