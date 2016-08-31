@@ -11,6 +11,7 @@ env:
   - PACKAGE=roboptim-core-plugin-ipopt
   - PACKAGE=roboptim-core-plugin-cminpack
   - PACKAGE=roboptim-capsule
+  - PACKAGE=roboptim-trajectory
   - PACKAGE=libmocap BREW_ARGS=--HEAD
 matrix:
   allow_failures:

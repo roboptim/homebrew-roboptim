@@ -1,13 +1,17 @@
 require "formula"
 
 class RoboptimTrajectory < Formula
-  homepage "http://www.roboptim.net/"
+  homepage "http://www.roboptim.net"
+  url "https://github.com/roboptim/roboptim-trajectory/releases/download/v3.2/roboptim-trajectory-3.2.tar.bz2"
+  sha256 "d700eabc80985ed178b55cdb0a7f8260b083bdb02d5598eb07831dc023426a6d"
 
   head 'https://github.com/roboptim/roboptim-trajectory.git'
 
   depends_on "cmake" => :build
   depends_on "doxygen" => :build
   depends_on "pkg-config" => :build
+  # FIXME: explicit eigen dependency required for pkg-config
+  depends_on "eigen" => :build
   depends_on "roboptim/roboptim/roboptim-core"
 
   #FIXME: should be optional
@@ -19,17 +23,12 @@ class RoboptimTrajectory < Formula
     # Always remove -Werror flag.
     args << "-DCXX_DISABLE_WERROR:BOOL=ON"
 
-    inreplace 'CMakeLists.txt',
-    'ADD_REQUIRED_DEPENDENCY("roboptim-core >= 2.0")',
-    'ADD_REQUIRED_DEPENDENCY("roboptim-core")'
+    inreplace 'src/CMakeLists.txt', 'SET_TARGET_PROPERTIES(',
+      '#SET_TARGET_PROPERTIES('
 
-    inreplace 'src/CMakeLists.txt', 'SOVERSION 2', ''
-    inreplace 'src/CMakeLists.txt', 'VERSION 2.0.0', ''
-
-    ENV.append_path "PKG_CONFIG_PATH",
-                    "#{HOMEBREW_PREFIX}/lib/pkgconfig"
     system "cmake", ".", *args
     system "make", "install"
+    system "make", "test"
   end
 
   test do
